@@ -4,15 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Generador de Frases</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="../static/style.css">
 </head>
 <body>
 
 <div class="container">
     <h1>Generador de Frases</h1>
+    
     <button onclick="obtenerFrase()">Nueva frase</button>
     <p id="frase">Presiona el botón</p>
+    
+    <input id="nuevaFrase" placeholder="Escribe una frase">
+    <button onclick="agregarFrase()">Agregar</button>
+
+    <p id="stats"></p>
 </div>
-<script src="script.js"></script>
+
+<script src="../static/script.js"></script>
+
 </body>
 </html>

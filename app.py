@@ -1,24 +1,33 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request, render_template
 from flask_cors import CORS
-import random
+import random, json
 
 app = Flask(__name__)
 CORS(app)
 
-frases = [
-    "Sigue avanzando, incluso lento.",
-    "Cada error te acerca al éxito.",
-    "La disciplina vence al talento.",
-    "Hoy es un buen día para empezar.",
-    "Construye algo que te haga orgulloso.",
-    "Aprender es tu superpoder."
-]
+# cargar frases
+with open("frases.json", "r", encoding="utf-8") as f:
+	frases = json.load(f)
 
-@app.route("/api/frase")
-def obtener_frase():
-    return jsonify({
-        "frase": random.choice(frases)
-    })
+def guardar():
+	with open("frases.json", "w", encoding="utf-8") as f:
+		json.dump(frases, f, ensure_ascii=False, indent=2)
 
-if __name__ == "__main__":
-    app.run(debug=True)
+@app.route("/")
+def home():
+	return render_template("index.html")
+
+@app.route("/api/frase", methods=["GET", "POST"])
+def frases_api():
+	if request.method == "POST":
+		data = request.get_json()
+		frases.append(data["frase"])
+		return {"ok": True}
+	return {"frase": random.choice(frases)}
+
+@app.route("/api/stats")
+def stats():
+	return {"total_frases": len(frases)}
+
+
+app.run(debug=True)
