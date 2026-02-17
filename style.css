@@ -1,0 +1,43 @@
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #0f172a, #1e3a8a);
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+}
+
+.container {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 40px;
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+    width: 400px;
+}
+
+h1 {
+    user-select: none;
+}
+
+button {
+    background: #00e5ff;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+    user-select: none;
+    transition: transform 0.3s ease;
+}
+
+button:hover {
+    transform: scale(1.07);
+}
+
+#frase {
+    margin-top: 20px;
+    font-size: 20px;
+}
